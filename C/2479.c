@@ -16,7 +16,7 @@ int insert(childList *l, childList i);
 void showAll(childList *l, childList i);
 //=======================
 
-int const MAXNOME = 20;
+#define MAXNOME 20
 int position = 0; // Position of the list, this const is incremented whenever a child is inserted in my list by the function insert
 int N = 0; // Number of child inserted by the user
 int well_behaved = 0;
@@ -46,8 +46,8 @@ main() {
   for (j = 0; j < N; j++)
   {
     setbuf(stdin, NULL);
-    i.name = (char *) malloc (MAXNOME * sizeof(char));
-    scanf ("%c %s", &i.behavior, i.name);
+    i.name = (char *) malloc (MAXNOME);
+    scanf ("%s%s", &i.behavior, i.name);
     while((unsigned)strlen(i.name) > MAXNOME) {
       scanf ("%s", i.name);
     }
@@ -88,7 +88,7 @@ insert(childList *l, childList i)
 void showAll(childList *l, childList i) {
   int j, k, check;
   char * strTemp;
-  strTemp = malloc(MAXNOME * sizeof(char) + 1);
+  strTemp = malloc(MAXNOME);
   for (j = 0; j < N; j++) {
     for (k = 0; k < N; k++) {
       check = strcmp(l[j].name, l[k].name);
